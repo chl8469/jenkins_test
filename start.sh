@@ -1,7 +1,9 @@
+img_ver=test:0.1
 pwd
 ls
-docker build -t test:0.1 ./
+docker build -t $img_ver ./
 docker rm -f api-server
-docker run -d --rm --name api-server -p 8000:8000 test:0.1
+docker rmi $img_ver
+docker run -d --rm --name api-server -p 8000:8000 $img_ver
 docker ps
 docker logs api-server
